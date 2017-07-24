@@ -17,7 +17,7 @@ class Dashboard extends Component {
                         (items, index) => (
                             <Row
                                 key={index}
-                                values={items}
+                                items={items}
                                 deleteItem={this.deleteItem.bind(this)} />
                         )
                     )

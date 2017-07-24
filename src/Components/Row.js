@@ -13,14 +13,20 @@ class Row extends Component {
     }
 
     render() {
+        let count = this.props.items.length;
+
+        let className = '';
+        if(count < 6) {
+            className = 'col-xs-offset-' + (6 - count);
+        }
 
         return (
             <div className="row">
                 {
-                    this.props.values.map((item, index) =>
+                    this.props.items.map((item, index) =>
                         <div
                             onClick={this.goToUrl.bind(this, item.url)}
-                            className={"col-xs-2 " + item.class}
+                            className={"col-xs-2 " + item.class + " " + (index === 0 ? className : '')}
                             key={item.id}>
 
                             <h3>{item.name}</h3>
@@ -39,7 +45,7 @@ class Row extends Component {
 }
 
 Row.propTypes = {
-    values: PropTypes.array,
+    items: PropTypes.array,
     deleteItem: PropTypes.func,
 };
 
